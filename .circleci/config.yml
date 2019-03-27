@@ -10,8 +10,8 @@ jobs:
     steps:
       - checkout
       - run:
-	  name: Change directory
-	  command: cd ./AndroidDemo
+          name: Change directory
+          command: cd ./AndroidDemo
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
