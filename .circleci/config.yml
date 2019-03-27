@@ -10,11 +10,14 @@ jobs:
     steps:
       - checkout
       - run:
+	  name: Change directory
+	  command: cd ./AndroidDemo
+      - run:
           name: Download Dependencies
-          command: ./AndroidDemo/gradlew androidDependencies
+          command: ./gradlew androidDependencies
       - run:
           name: Run UnitTest
-          command: ./AndroidDemo/gradlew testDemoDebugUnitTest
+          command: ./gradlew testDemoDebugUnitTest
       - run:
           name: Setup emulator
           command: sdkmanager "system-images;android-16;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-16;default;armeabi-v7a"
