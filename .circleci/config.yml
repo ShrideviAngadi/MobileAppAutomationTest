@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/code/AndroidDemo
+    working_directory: ~/code
     docker:
       # Android the primary container
       - image: circleci/android:api-26
@@ -11,10 +11,10 @@ jobs:
       - checkout
       - run:
           name: Download Dependencies
-          command: ./gradlew androidDependencies
+          command: ./AndroidDemo/gradlew androidDependencies
       - run:
           name: Run UnitTest
-          command: ./gradlew testDemoDebugUnitTest
+          command: ./AndroidDemo/gradlew testDemoDebugUnitTest
       - run:
           name: Setup emulator
           command: sdkmanager "system-images;android-16;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-16;default;armeabi-v7a"
